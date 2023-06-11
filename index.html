@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>marmablue.co.uk</title>
+  <style>
+    body {
+      margin: 0;
+      box-sizing: border-box;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      background-image: url('bg.png');
+      background-repeat: repeat;
+    }
+    #marmablue {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 60px;
+      height: 74px;
+    }
+  </style>
+</head>
+<body>
+  <img src="marmablue.gif" id="marmablue"/>
+  <script>
+    let x = (Math.random() * 0.8 + 0.1) * document.body.clientWidth;
+    let y = (Math.random() * 0.8 + 0.1) * document.body.clientHeight;
+    let dirX = Math.random() <= 0.5 ? -1 : 1;
+    let dirY = Math.random() <= 0.5 ? -1 : 1;
+    const speed = 2;
+    let m = document.getElementById("marmablue");
+    const mWidth = m.clientWidth;
+    const mHeight = m.clientHeight;
+
+    function animate() {
+      if (y + mHeight >= document.body.clientHeight || y < 0) {
+        dirY *= -1;
+      }
+      if (x + mWidth >= document.body.clientWidth || x < 0) {
+        dirX *= -1;
+      }
+      x += dirX * speed;
+      y += dirY * speed;
+      m.style.left = x + "px";
+      m.style.top = y + "px";
+      window.requestAnimationFrame(animate);
+    }
+
+    window.requestAnimationFrame(animate);
+  </script>
+</body>
+</html>
